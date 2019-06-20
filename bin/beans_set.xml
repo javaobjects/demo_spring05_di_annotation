@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+  <!--      先配置最底层的Dao -->
+       <bean id="dao" class="test.set.MyDao"></bean>
+       
+       <!--
+       
+       autowire="byName" 表示根据名字自动装配
+            还有一个值是byType 表示根据类型自动装配属性
+         -->
+       <bean id="service" class="test.set.MyService" autowire="byType">
+       <!-- 
+       	private MyDao dao;//MyService依赖MyDao
+       	name=""里的值属性与这里的属性名相同
+       	ref=""里的值属性与所依赖的类的bean的id值相同
+        -->
+		<!-- 	<property name="dao" ref="dao"></property> -->
+       </bean>
+       <bean id="controller" class="test.set.MyController" autowire="byType">
+       	<!-- 	<property name="service" ref="service"></property> -->
+       </bean>
+</beans>

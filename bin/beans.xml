@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd">
+  <!--      先配置最底层的Dao -->
+       <bean id="dao" class="test.MyDao"></bean>
+       <bean id="service" class="test.MyService">
+<!--        构造函数注入     constructor-arg:构造器-参数 -->
+			<constructor-arg index="0" ref="dao"></constructor-arg>
+       </bean>
+       <bean id="controller" class="test.MyController">
+       			<constructor-arg index="0" ref="service"></constructor-arg>
+       </bean>
+</beans>

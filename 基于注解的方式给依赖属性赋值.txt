@@ -1,0 +1,25 @@
+
+
+使用注解的方式给依赖属性赋值非常方便：
+
+1.不需要在xml文件中注册bean了；
+2.不需要提供属性的setter/getter方法了；
+
+如何使用注解开发：
+
+1.导入aop相关的包
+
+aop   aspect
+
+2.在xml文件中开启全包扫描：
+<!-- 启动注解，全包扫描 -->
+	<context:component-scan base-package="test"></context:component-scan>
+
+	
+3.编写完bean的代码后，给bean带上帽子：@Service  @Controller  @Repository  @Component
+
+4.还要给依赖的属性带上帽子： @Autowired  @Resource  
+建议大家使用框架的时候后专心使用框架API，不要一边使用框架API，一边使用JavaAPI，所以使用@Autowired
+
+@Autowired 默认按类型装配，
+@Resource默认按名称装配，当找不到与名称匹配的bean才会按类型装配。
