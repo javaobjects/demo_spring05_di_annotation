@@ -14,5 +14,5 @@
        	base-package="com.ptcs.demo.dao"(基本包名 com.ptcs.demo)
        	base-package="com.ptcs.demo.control"
         -->
-       <context:component-scan base-package="test"></context:component-scan>
+       <context:component-scan base-package="trainning"></context:component-scan>
 </beans>
